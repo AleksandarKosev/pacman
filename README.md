@@ -207,3 +207,5 @@ docker images
 #Run the container on port 8080 and play the game :D 
 docker run -d -p 8080:8080 aleksandarkosev/pacman:latest
 ```
+
+![alt text](https://github.com/AleksandarKosev/pacman/blob/master/assets/game.PNG?raw=true)
