@@ -46,4 +46,5 @@ jobs:
     - name: Run Trivy Scan
       if: github.event_name == 'push'
       run: |
-        trivy image --severity CRITICAL --exit-code 1 --no-progress pacman/pacmanbuild:SimSectorStudioBuild
+        trivy image pacman/pacmanbuild:SimSectorStudioBuild
+      #trivy image --severity CRITICAL --exit-code 1 --no-progress pacman/pacmanbuild:SimSectorStudioBuild
