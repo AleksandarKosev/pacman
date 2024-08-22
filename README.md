@@ -6,15 +6,15 @@
 [![Docker Pulls](https://img.shields.io/docker/pulls/aleksandarkosev/pacman)](https://hub.docker.com/repository/docker/aleksandarkosev/pacman)
 [![Contributors](https://img.shields.io/github/contributors/AleksandarKosev/pacman)](https://github.com/AleksandarKosev/pacman/graphs/contributors)
 
-> **Description**: This repository contains the pacman game along with a python script that hosts the game locally. Further more it contains a DockerFile which builds it into a container. Github Actions Workflow was also added which upon pushing to main it builds, scans any vulnerabilities with <a href="https://github.com/aquasecurity/trivy">Trivy</a>, fails if there are CRITICAL vulnerabilities or merges with main if there are none. In the end it also pushs the image to Docker Hub. When a pull request is made, it builds and tests the image before merging happens. 
+> **Description**: This repository contains the pacman game along with a python script that hosts the game locally. Furthermore it contains a DockerFile which builds it into a container. Github Actions Workflow was also added which upon pushing to main it builds, scans any vulnerabilities with <a href="https://github.com/aquasecurity/trivy">Trivy</a>, fails if there are CRITICAL vulnerabilities or merges with main if there are none. In the end it also pushes the image to Docker Hub. When a pull request is made, it builds and tests the image before merging happens. 
 
 ## 🚀 Features
 
 - ✨ **Feature 1**: Pacman in JavaScript.
 - ⚡ **Feature 2**: Python script which hosts the game locally.
-- 💎 **Feature 3**: Dockerfile which builds the project into an image. 
+- 💎 **Feature 3**: DockerFile which builds the project into an image. 
 - 🔥 **Feature 4**: Using <a href="https://docs.github.com/en/actions/writing-workflows">Github Actions Workflow</a> to build the project, scan it with Trivy and push both to master and docker hub if no CRITICAL vulnerabilities are found.
-- 🔒 **Security**: Good pratices for optimizing and securing the container and workflow. 
+- 🔒 **Security**: Good practices for optimizing and securing the container and workflow. 
 - 🛠️ **Customization**: Level Up can be done on this repository by switching to Flash or Django for hosting for multiplayer, also maybe adding more games in the future. 
 
 ## 🛠️ Installation
@@ -32,7 +32,7 @@
 git clone https://github.com/AleksandarKosev/pacman
 cd pacman
 
-# You can even play it eve now by just running this(assuming you have python installed)
+# You can even play it even now by just running this(assuming you have python installed)
 python main.py
 # To access the game, open the browser and go to "localhost:8080"
 
@@ -46,7 +46,7 @@ docker run -d -p 8080:8080 aleksandarkosev/pacman:latest
 ```
 
 ## Detailed Explanation
-This repositry has four importand parts that needs pointing out.
+This repositry has four important parts that needs pointing out.
 <ul>
 <li><a href="#python">Python script "main.py": for hosting the game</a></li>
 <li><a href ="#dockerfile">Dockerfile: For Building the project</a></li>
@@ -55,7 +55,7 @@ This repositry has four importand parts that needs pointing out.
 
 ### main.py
 <p id="python"> </p>
-The python script is pretty much straightforward, it can be diveded into two parts. One part as preparation and the other part that hosts the game.
+The python script is pretty much straightforward, it can be divided into two parts. One part as preparation and the other part that hosts the game.
 
 ```python
 def shutdown_server(signum, frame):
@@ -77,7 +77,7 @@ os.chdir(WEB_DIR)
 ```
 
 ```python
-#Hosting the game on the most simplest way, logging the activity and gracefully catching if something goes wrong.
+#Hosting the game in the simplest way, logging the activity and gracefully catching if something goes wrong.
 Handler = http.server.SimpleHTTPRequestHandler
 try:
     with socketserver.TCPServer(("", PORT), Handler) as httpd:
@@ -200,7 +200,7 @@ jobs:
 <img src="assets/workflow.PNG" width="650" height="450">
 
 ### Here is how critical errors occur from a simple lines of code.
-This errors occur when in our Dockerfile we build our image with <b>python:3.12.4</b> instead of <b>python:3.12.4-alpine</b>
+These errors occur when in our Dockerfile we build our image with <b>python:3.12.4</b> instead of <b>python:3.12.4-alpine</b>
 ### Before
 <img src="assets/critical.PNG" width="950" height="550">
 
