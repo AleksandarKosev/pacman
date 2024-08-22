@@ -33,7 +33,7 @@ jobs:
     # Build the Docker image, using current authenticated github user.
     - name: Build the Docker image
       run: |
-        docker build -f Dockerfile -t pacman/pacmanbuild:SimSectorStudioBuild . --build-arg VERSION=1
+        docker build -f Dockerfile -t aleksandarkosev/pacman:latest . --build-arg VERSION=1
 
     # Download Trivy, used for finding and reporting vulnerabilities.
     - name: Install Trivy
@@ -46,17 +46,17 @@ jobs:
     - name: Run Trivy Scan(Pushing Changes to repo.)
       if: github.event_name == 'push'
       run: |
-        trivy image --severity CRITICAL --exit-code 1 --no-progress pacman/pacmanbuild:SimSectorStudioBuild
+        trivy image --severity CRITICAL --exit-code 1 --no-progress aleksandarkosev/pacman:latest
     
     - name: Run Trivy Scan(Pull Request)
       if: github.event_name == 'pull'
       run: |
-        trivy image pacman/pacmanbuild:SimSectorStudioBuild
-        docker build -t pacman/pacmanbuild:SimSectorStudioBuild .
-        docker run -d -p 8080:8080 pacman/pacmanbuild:SimSectorStudioBuild
+        trivy image aleksandarkosev/pacman:latest
+        docker build -t aleksandarkosev/pacman:latest .
+        docker run -d -p 8080:8080 aleksandarkosev/pacman:latest
     
     # Push the Docker image to Docker Hub
     - name: Push the Docker image
       if: github.event_name == 'push'
       run: |
-        docker push aleksandarkosev/pacman:SimSectorStudioBuild
+        docker push aleksandarkosev/pacman:latest
