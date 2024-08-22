@@ -4,13 +4,13 @@ FROM python:3.12.4
 # Set the working directory in the container
 WORKDIR /app
 
-RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+# RUN addgroup -S appgroup && adduser -S appuser -G appgroup
 
 # Copy the website files into the container
-COPY --chown=appuser:appgroup ./ ./pacman
+COPY  ./ ./pacman
 
 # Copy the Python script into the container
-COPY --chown=appuser:appgroup main.py .
+COPY  main.py .
 
 # Switch to the non-root user
 USER appuser
