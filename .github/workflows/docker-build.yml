@@ -52,7 +52,7 @@ jobs:
       if: github.event_name == 'pull'
       run: |
         trivy image aleksandarkosev/pacman:latest
-        docker build -t aleksandarkosev/pacman:latest .
+        docker build -f Dockerfile -t aleksandarkosev/pacman:latest .
         docker run -d -p 8080:8080 aleksandarkosev/pacman:latest
     
     # Push the Docker image to Docker Hub
