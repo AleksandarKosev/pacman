@@ -7,11 +7,9 @@ WORKDIR /app
 RUN addgroup -S appgroup && adduser -S appuser -G appgroup
 
 # Copy the website files into the container
-# COPY ./ ./pacman
 COPY --chown=appuser:appgroup ./ ./pacman
 
 # Copy the Python script into the container
-#COPY main.py .
 COPY --chown=appuser:appgroup main.py .
 
 # Switch to the non-root user

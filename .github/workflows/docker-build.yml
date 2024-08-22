@@ -60,3 +60,17 @@ jobs:
       if: github.event_name == 'push'
       run: |
         docker push aleksandarkosev/pacman:latest
+
+  # Update Docker Hub Repository Description
+    - name: Update Docker Hub Repository Description
+      if: github.event_name == 'push'
+      env:
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        REPOSITORY: "aleksandarkosev/pacman"
+        DESCRIPTION: "This repository contains the Pacman game built with JavaScript and hosted locally using a Python script. The project is containerized using Docker and includes a CI/CD pipeline with GitHub Actions that builds, scans, and deploys the image to Docker Hub."
+      run: |
+        curl -X PATCH "https://hub.docker.com/v2/repositories/${REPOSITORY}/" \
+          -u "$DOCKER_USERNAME:$DOCKER_PASSWORD" \
+          -H "Content-Type: application/json" \
+          -d '{"description": "'"$DESCRIPTION"'"}'
