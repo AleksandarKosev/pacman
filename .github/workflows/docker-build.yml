@@ -30,9 +30,20 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
-    # Build the Docker image
+    # Build the Docker image, using current authenticated github user.
     - name: Build the Docker image
       run: |
         docker build -f Dockerfile -t ${{ github.actor }}/pacman:SimSectorStudioBuild . --build-arg VERSION=1
 
-    
+    # Download Trivy, used for finding and reporting vulnerabilities.
+    - name: Install Trivy
+      run: |
+        wget https://github.com/aquasecurity/trivy/releases/download/v0.36.0/trivy_0.36.0_Linux-64bit.deb
+        sudo dpkg -i trivy_0.36.0_Linux-64bit.deb
+      
+    #This part of the action is ran when pushing code.
+    #The condition is, if Trivy detects CRITICAL vulnerabilities, it would abort the workflow.
+    - name: Run Trivy Scan
+      if: github.event_name == 'push'
+      run: |
+        trivy image --severity CRITICAL --exit-code 1 --no-progress ${{ github.actor }}/pacman:SimSectorStudioBuild
