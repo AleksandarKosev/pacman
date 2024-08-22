@@ -195,6 +195,11 @@ jobs:
       run: |
         docker push aleksandarkosev/pacman:latest
 ```
+### The actions workflow should look like this after a few runs. 
+<br>
+<img src="assets/workflow.PNG" width="650" height="450">
+
+
 
 ## Testing the image
 We can test the image by doing the following(assuming you have docker hub installed):
@@ -208,4 +213,4 @@ docker images
 docker run -d -p 8080:8080 aleksandarkosev/pacman:latest
 ```
 
-![alt text](https://github.com/AleksandarKosev/pacman/blob/master/assets/game.PNG?raw=true)
+<img src="assets/game.PNG" width="650" height="650">
