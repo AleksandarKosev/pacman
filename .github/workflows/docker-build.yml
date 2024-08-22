@@ -59,4 +59,4 @@ jobs:
     - name: Push the Docker image
       if: github.event_name == 'push'
       run: |
-        docker push pacman/pacmanbuild:SimSectorStudioBuild
+        docker push aleksandarkosev/pacmanbuild:SimSectorStudioBuild
