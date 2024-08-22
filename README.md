@@ -2,8 +2,8 @@
 
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Build Status](https://img.shields.io/github/actions/workflow/status/AleksandarKosev/pacman/build.yml?branch=main)](https://github.com/AleksandarKosev/pacman/actions)
-[![Docker Pulls](https://img.shields.io/docker/pulls/AleksandarKosev/pacman)](https://hub.docker.com/repository/docker/aleksandarkosev/pacman)
+[![Build Status](https://github.com/AleksandarKosev/pacman/actions/workflows/docker-build.yml/badge.svg)](https://github.com/AleksandarKosev/pacman/actions)
+[![Docker Pulls](https://img.shields.io/docker/pulls/aleksandarkosev/pacman)](https://hub.docker.com/repository/docker/aleksandarkosev/pacman)
 [![Contributors](https://img.shields.io/github/contributors/AleksandarKosev/pacman)](https://github.com/AleksandarKosev/pacman/graphs/contributors)
 
 > **Description**: This repository contains the pacman game along with a python script that hosts the game locally. Further more it contains a DockerFile which builds it into a container. Github Actions Workflow was also added which upon pushing to main it builds, scans any vulnerabilities with <a href="https://github.com/aquasecurity/trivy">Trivy</a>, fails if there are CRITICAL vulnerabilities or merges with main if there are none. In the end it also pushs the image to Docker Hub. When a pull request is made, it builds and tests the image before merging happens. 
